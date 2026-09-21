@@ -11,6 +11,10 @@
 		AA1CADAF1B39D7E700D5C7DF /* OctoscreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1CADAE1B39D7E700D5C7DF /* OctoscreenView.m */; };
 		AA1CADB71B39FECA00D5C7DF /* build in Resources */ = {isa = PBXBuildFile; fileRef = AA1CADB51B39FECA00D5C7DF /* build */; };
 		AA1CADB81B39FECA00D5C7DF /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = AA1CADB61B39FECA00D5C7DF /* index.html */; };
+		AA1CADC21B39FECA00D5C7DF /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = AA1CADC31B39FECA00D5C7DF /* thumbnail.png */; };
+		AA1CADC41B39FECA00D5C7DF /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA1CADC51B39FECA00D5C7DF /* thumbnail@2x.png */; };
+		AA1CADC01B39FECA00D5C7DF /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1CADBE1B39FECA00D5C7DF /* ScreenSaver.framework */; };
+		AA1CADC11B39FECA00D5C7DF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1CADBF1B39FECA00D5C7DF /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,10 @@
 		AA1CADAE1B39D7E700D5C7DF /* OctoscreenView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OctoscreenView.m; sourceTree = "<group>"; };
 		AA1CADB51B39FECA00D5C7DF /* build */ = {isa = PBXFileReference; lastKnownFileType = folder; path = build; sourceTree = "<group>"; };
 		AA1CADB61B39FECA00D5C7DF /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		AA1CADC31B39FECA00D5C7DF /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail.png; sourceTree = "<group>"; };
+		AA1CADC51B39FECA00D5C7DF /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail@2x.png"; sourceTree = "<group>"; };
+		AA1CADBE1B39FECA00D5C7DF /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = System/Library/Frameworks/ScreenSaver.framework; sourceTree = SDKROOT; };
+		AA1CADBF1B39FECA00D5C7DF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +35,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1CADC01B39FECA00D5C7DF /* ScreenSaver.framework in Frameworks */,
+				AA1CADC11B39FECA00D5C7DF /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +64,8 @@
 			children = (
 				AA1CADB51B39FECA00D5C7DF /* build */,
 				AA1CADB61B39FECA00D5C7DF /* index.html */,
+				AA1CADC31B39FECA00D5C7DF /* thumbnail.png */,
+				AA1CADC51B39FECA00D5C7DF /* thumbnail@2x.png */,
 				AA1CADAC1B39D7E700D5C7DF /* OctoscreenView.h */,
 				AA1CADAE1B39D7E700D5C7DF /* OctoscreenView.m */,
 				AA1CADAA1B39D7E700D5C7DF /* Supporting Files */,
@@ -107,7 +119,7 @@
 		AA1CAD9E1B39D7E700D5C7DF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 1600;
 				ORGANIZATIONNAME = "Steve Smith";
 				TargetAttributes = {
 					AA1CADA61B39D7E700D5C7DF = {
@@ -139,6 +151,8 @@
 			files = (
 				AA1CADB71B39FECA00D5C7DF /* build in Resources */,
 				AA1CADB81B39FECA00D5C7DF /* index.html in Resources */,
+				AA1CADC21B39FECA00D5C7DF /* thumbnail.png in Resources */,
+				AA1CADC41B39FECA00D5C7DF /* thumbnail@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +205,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				ARCHS = "arm64 x86_64";
+				MARKETING_VERSION = 1.1.0;
+				CURRENT_PROJECT_VERSION = 1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -227,7 +244,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				ARCHS = "arm64 x86_64";
+				MARKETING_VERSION = 1.1.0;
+				CURRENT_PROJECT_VERSION = 1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -236,9 +256,11 @@
 		AA1CADB31B39D7E700D5C7DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
+				COMBINE_HIDPI_IMAGES = NO;
 				INFOPLIST_FILE = Octoscreen/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 			};
@@ -247,9 +269,11 @@
 		AA1CADB41B39D7E700D5C7DF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
+				COMBINE_HIDPI_IMAGES = NO;
 				INFOPLIST_FILE = Octoscreen/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
 			};

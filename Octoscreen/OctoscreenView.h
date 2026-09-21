@@ -7,11 +7,17 @@
 //
 
 #import <ScreenSaver/ScreenSaver.h>
-#import <WebKit/WebKit.h>
 
 @interface OctoscreenView : ScreenSaverView
 {
-    WebView *webView;
+    NSFont *_iconFont;
+    NSArray<NSNumber *> *_glyphs;
+    NSMutableArray<NSNumber *> *_cellGlyphs;
+    NSMutableArray<NSNumber *> *_fadeStartTimes;
+    NSTimeInterval _startedAt;
+    NSTimeInterval _nextFlashAt;
+    NSInteger _gridColumns;
+    NSInteger _gridRows;
 }
 
 @end
