@@ -55,6 +55,8 @@ static const NSTimeInterval OctoscreenFadeVisibleDuration = 4.0;
                     @0xf081, @0x26a1];
         _startedAt = NSDate.timeIntervalSinceReferenceDate;
         _nextFlashAt = OctoscreenFadeInterval;
+        _colorCycleOffset = (NSTimeInterval)arc4random_uniform(1000000) / 1000000.0 *
+            OctoscreenColorCycleDuration;
         [self setAnimationTimeInterval:1.0 / 30.0];
     }
     return self;
@@ -69,7 +71,8 @@ static const NSTimeInterval OctoscreenFadeVisibleDuration = 4.0;
         [NSColor colorWithSRGBRed:67.0 / 255.0 green:196.0 / 255.0 blue:185.0 / 255.0 alpha:1.0],
         [NSColor colorWithSRGBRed:39.0 / 255.0 green:165.0 / 255.0 blue:233.0 / 255.0 alpha:1.0]
     ];
-    CGFloat position = fmod(time, OctoscreenColorCycleDuration) / OctoscreenColorCycleDuration * colors.count;
+    CGFloat position = fmod(time + _colorCycleOffset, OctoscreenColorCycleDuration) /
+        OctoscreenColorCycleDuration * colors.count;
     NSUInteger fromIndex = (NSUInteger)floor(position) % colors.count;
     NSUInteger toIndex = (fromIndex + 1) % colors.count;
     CGFloat progress = position - floor(position);
@@ -78,6 +81,30 @@ static const NSTimeInterval OctoscreenFadeVisibleDuration = 4.0;
     return [NSColor colorWithSRGBRed:from.redComponent + (to.redComponent - from.redComponent) * progress
                                green:from.greenComponent + (to.greenComponent - from.greenComponent) * progress
                                 blue:from.blueComponent + (to.blueComponent - from.blueComponent) * progress alpha:1.0];
+}
+
+- (void)startAnimation
+{
+    _startedAt = NSDate.timeIntervalSinceReferenceDate;
+    _nextFlashAt = OctoscreenFadeInterval;
+
+    // System Settings may have already drawn a preliminary frame. Preserve its
+    // glyphs so the grid does not visibly change when animation starts, while
+    // resetting fade timestamps because they are relative to _startedAt.
+    for (NSUInteger index = 0; index < _fadeStartTimes.count; index++) {
+        _fadeStartTimes[index] = @(-DBL_MAX);
+    }
+    [super startAnimation];
+}
+
+- (void)stopAnimation
+{
+    [super stopAnimation];
+    // System Settings may draw the view before the next startAnimation call.
+    // Pick the next phase now so that preliminary frame has the same color.
+    _colorCycleOffset = (NSTimeInterval)arc4random_uniform(1000000) / 1000000.0 *
+        OctoscreenColorCycleDuration;
+    _startedAt = NSDate.timeIntervalSinceReferenceDate;
 }
 
 - (BOOL)isLogoCellAtIndex:(NSUInteger)index columns:(NSInteger)columns rows:(NSInteger)rows

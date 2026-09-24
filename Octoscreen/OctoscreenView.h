@@ -16,6 +16,7 @@
     NSMutableArray<NSNumber *> *_fadeStartTimes;
     NSTimeInterval _startedAt;
     NSTimeInterval _nextFlashAt;
+    NSTimeInterval _colorCycleOffset;
     NSInteger _gridColumns;
     NSInteger _gridRows;
 }
